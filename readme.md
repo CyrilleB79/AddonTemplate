@@ -157,4 +157,26 @@ Read the documentation for the tools you wish to use when building and developin
 
 Note that this template only provides a basic add-on structure and build infrastructure. You may need to adapt it for your specific needs such as using additional tools.
 
+### Keeping your add-on in sync with this template
+
+This template is continually improved by its maintainer and the whole community.
+Optionally, you may want to keep your add-on in sync with the update dones in this template.
+If so, follow the following instructions:
+
+git remote add template https://github.com/nvdaaddons/AddonTemplate.git
+git fetch template
+git checkout -b templateMaster template/master
+git merge -s ours ceb4b2f4e19bb3a807d76101505ce453bd1f0ae9 --allow-unrelated-histories -m "Fake merge of add-on template master branch (commit 'ceb4b2f4e19bb3a807d76101505ce453bd1f0ae9'); commit identical to previous one."
+
+
+git merge templateMaster
+# You will likely have conflicts
+# First if there is a conflict on the readme.md file, we want to keep our readme and discard the changes from the add-on template:
+git checkout --ours readme.md
+# For other files (e.g. buildVars, sconstruct, etc.), resolve manually the conflicts in the files.
+# Then add your modified files and commit them:
+git add .
+
+### Conclusion
+
 If you have any issues please use the NVDA addon list mentioned above.
